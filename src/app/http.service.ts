@@ -9,7 +9,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  myMethod() {
+  getIP() {
     return this.http.get('/ip')
   }
 }

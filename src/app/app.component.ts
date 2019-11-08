@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   constructor(private _http: HttpService ) {}
 
   ngOnInit() {
-    this._http.myMethod().subscribe(data => {
+    this._http.getIP().subscribe(data => {
       this.ipData = data;
     })
   }
