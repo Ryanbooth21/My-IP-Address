@@ -1,7 +1,7 @@
 # Running locally
-- NPM install to install all packages
-- Lauch server with node server.js
-- Launch client with npm start
+- NPM install to install all packages.
+- Lauch server with node server.js.
+- Launch client with npm start.
 
 # IP Address App
 
