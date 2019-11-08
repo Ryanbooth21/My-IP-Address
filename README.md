@@ -1,4 +1,9 @@
-# YoudecideApp
+# Running locally
+- NPM install to install all packages
+- Lauch server with node server.js
+- Launch client with npm start
+
+# IP Address App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
 
