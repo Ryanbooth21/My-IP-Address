@@ -9,7 +9,12 @@ import { HttpService } from './http.service';
 
 export class AppComponent implements OnInit {
   title = 'youdecide';
-  ipData: Object;
+  ipData;
+  getIpList;
+  ipList = [];
+  ipListRes = [];
+
+  public sorted:boolean = false;
   public showIP:boolean = false;
   public showCountry:boolean = false;
 
@@ -20,7 +25,22 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this._http.getIP().subscribe(data => {
+
       this.ipData = data;
+        if (localStorage.getItem("ipList")){
+          this.getIpList = localStorage.getItem("ipList")
+          if (!this.getIpList.includes(this.ipData.ip)){
+            this.ipList.push(this.getIpList.split(","), this.ipData.ip);
+          } else {
+            this.ipList = this.getIpList.split(",");
+          };
+
+        localStorage.setItem("ipList", this.ipList.toString());
+        this.ipListRes = localStorage.getItem("ipList").split(",");
+      } else {
+        localStorage.setItem("ipList", this.ipData.ip)
+        this.ipListRes = localStorage.getItem("ipList").split(",");
+      }
     })
   }
 
@@ -39,6 +59,20 @@ export class AppComponent implements OnInit {
       this.buttonCountry = "Hide Country";
     } else {
       this.buttonCountry = "Show Country";
+    }
+  }
+
+  sort(){
+    if (!this.sorted) {
+      this.ipListRes = this.ipListRes.sort((a,b)=>{
+        return parseInt(b) - parseInt(a)
+      })
+      this.sorted = true;
+    } else if (this.sorted) {
+      this.ipListRes = this.ipListRes.sort((a,b)=>{
+        return parseInt(a) - parseInt(b)
+      })
+      this.sorted = false;
     }
   }
 }

@@ -14,5 +14,10 @@
                 <li>{{ipData.country}}</li>
             </ul>
         </ng-container>
+        <h4>IPs on record</h4>
+        <button mat-button color="primary" (click)="sort()">Sort</button>
+        <ul>
+            <li class="ipRecord" *ngFor="let ip of ipListRes">{{ip}}</li>
+        </ul>
     </mat-card>
 </div>
