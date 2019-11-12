@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
       this.ipData = data;
         if (localStorage.getItem("ipList")){
-          this.getIpList = localStorage.getItem("ipList")
+          this.getIpList = localStorage.getItem("ipList");
           if (!this.getIpList.includes(this.ipData.ip)){
             this.ipList.push(this.getIpList.split(","), this.ipData.ip);
           } else {
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
         localStorage.setItem("ipList", this.ipList.toString());
         this.ipListRes = localStorage.getItem("ipList").split(",");
       } else {
-        localStorage.setItem("ipList", this.ipData.ip)
+        localStorage.setItem("ipList", this.ipData.ip);
         this.ipListRes = localStorage.getItem("ipList").split(",");
       }
     })
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
   toggleIP(){
     this.showIP = !this.showIP;
-    if(this.showIP){
+    if (this.showIP){
       this.buttonIP = "Hide IP";
     } else {
       this.buttonIP = "Show IP";
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
   toggleCountry(){
     this.showCountry = !this.showCountry;
-    if(this.showCountry){
+    if (this.showCountry){
       this.buttonCountry = "Hide Country";
     } else {
       this.buttonCountry = "Show Country";
@@ -64,14 +64,14 @@ export class AppComponent implements OnInit {
 
   sort(){
     if (!this.sorted) {
-      this.ipListRes = this.ipListRes.sort((a,b)=>{
+      this.ipListRes = this.ipListRes.sort((a,b) => {
         return parseInt(b) - parseInt(a)
-      })
+      });
       this.sorted = true;
     } else if (this.sorted) {
-      this.ipListRes = this.ipListRes.sort((a,b)=>{
+      this.ipListRes = this.ipListRes.sort((a,b) => {
         return parseInt(a) - parseInt(b)
-      })
+      });
       this.sorted = false;
     }
   }
